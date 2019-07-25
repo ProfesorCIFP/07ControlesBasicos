@@ -31,5 +31,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    public void onClick(View view) {
 
+        switch (view.getId()) {
+            case R.id.btnLogin:
+                Toast.makeText(getApplicationContext(), "Login....", Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.btnCancelar:
+                Toast.makeText(getApplicationContext(), "Cancelando....", Toast.LENGTH_SHORT).show();
+                break;
+        }
+    }
 }
