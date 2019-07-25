@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -15,7 +16,8 @@ public class MainActivity extends AppCompatActivity {
     private EditText etNombre = null;
     private EditText etEmail = null;
     private EditText etPassword = null;
-    private Button btnRegistrar = null;
+    private CheckBox cbMayorEdad = null;
+    private CheckBox cbPoliticas = null;
 
 
     @Override
@@ -27,31 +29,37 @@ public class MainActivity extends AppCompatActivity {
         etNombre = findViewById(R.id.etNombre);
         etEmail = findViewById(R.id.etEmail);
         etPassword = findViewById(R.id.etPassword);
-        btnRegistrar = findViewById(R.id.btnRegistrar);
+        cbMayorEdad = findViewById(R.id.cbMayorEdad);
+        cbPoliticas = findViewById(R.id.cbPoliticas);
 
-        btnRegistrar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String datos = recogeDatosInsertados();
-                textResultado.setText("-- Registrando -- \n" + datos);
-            }
-        });
     }
 
 
     public void onClick(View view) {
         String datos;
         switch (view.getId()) {
-            case R.id.btnLogin:
-                datos = recogeDatosInsertados();
-                textResultado.setText("-- Login -- \n" + datos);
-                break;
+            case R.id.btnRegistrar:
 
+                if (cbPoliticas.isChecked() & cbMayorEdad.isChecked()) {
+                    datos = recogeDatosInsertados();
+                    textResultado.setText("-- Registrando -- \n" + datos);
+                } else
+                    Toast.makeText(getApplicationContext(), "Debes aceptar las políticas de privacidad y ser mayor de edad", Toast.LENGTH_SHORT).show();
+                break;
             case R.id.btnCancelar:
-                datos = recogeDatosInsertados();
-                textResultado.setText("-- Cancelando -- \n" + datos);
+                textResultado.setText("-- Cancelando -- \n");
+                limpiaCampos();
                 break;
         }
+    }
+
+    private void limpiaCampos() {
+        etNombre.setText("");
+        etEmail.setText("");
+        etPassword.setText("");
+        cbMayorEdad.setChecked(false);
+        cbPoliticas.setChecked(true);
+
     }
 
     private String recogeDatosInsertados() {
@@ -60,6 +68,16 @@ public class MainActivity extends AppCompatActivity {
         datos += "Nombre: " + etNombre.getText() + "\n";
         datos += "Email: " + etEmail.getText() + "\n";
         datos += "Password: " + etPassword.getText() + "\n";
+
+        if (cbMayorEdad.isChecked())
+            datos += "Es mayor de edad \n";
+        else
+            datos += "NO es mayor de edad \n";
+
+        if (cbPoliticas.isChecked())
+            datos += "Acepta las políticas de privacidad \n";
+        else
+            datos += "NO acepta las políticas de privacidad \n";
 
         return datos;
     }
