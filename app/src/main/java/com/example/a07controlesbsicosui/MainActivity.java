@@ -25,7 +25,8 @@ public class MainActivity extends AppCompatActivity {
         btnRegistrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "Registrando....", Toast.LENGTH_SHORT).show();
+                textResultado.setText("Registrando....");
+
             }
         });
     }
@@ -35,11 +36,11 @@ public class MainActivity extends AppCompatActivity {
 
         switch (view.getId()) {
             case R.id.btnLogin:
-                Toast.makeText(getApplicationContext(), "Login....", Toast.LENGTH_SHORT).show();
+                textResultado.setText("Login....");
                 break;
 
             case R.id.btnCancelar:
-                Toast.makeText(getApplicationContext(), "Cancelando....", Toast.LENGTH_SHORT).show();
+                textResultado.setText("Cancelando....");
                 break;
         }
     }
