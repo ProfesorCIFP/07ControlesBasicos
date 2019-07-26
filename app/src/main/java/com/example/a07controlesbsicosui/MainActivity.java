@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,6 +19,8 @@ public class MainActivity extends AppCompatActivity {
     private EditText etPassword = null;
     private CheckBox cbMayorEdad = null;
     private CheckBox cbPoliticas = null;
+    private RadioButton rbHombre = null;
+    private RadioButton rbMujer = null;
 
 
     @Override
@@ -31,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
         etPassword = findViewById(R.id.etPassword);
         cbMayorEdad = findViewById(R.id.cbMayorEdad);
         cbPoliticas = findViewById(R.id.cbPoliticas);
+        rbHombre = findViewById(R.id.rbHombre);
+        rbMujer = findViewById(R.id.rbMujer);
 
     }
 
@@ -78,6 +83,11 @@ public class MainActivity extends AppCompatActivity {
             datos += "Acepta las políticas de privacidad \n";
         else
             datos += "NO acepta las políticas de privacidad \n";
+
+        if (rbHombre.isChecked())
+            datos += "Sección MASCULINA \n";
+        else
+            datos += "Sección FEMENINA \n";
 
         return datos;
     }
