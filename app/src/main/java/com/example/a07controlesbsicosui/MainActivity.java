@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
@@ -21,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private CheckBox cbMayorEdad = null;
     private CheckBox cbPoliticas = null;
     private RadioButton rbHombre = null;
-    private ToggleButton tbActivaBotones = null;
+    private Switch swActivaBotones = null;
     private Button btnRegistrar = null;
 
 
@@ -37,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         cbMayorEdad = findViewById(R.id.cbMayorEdad);
         cbPoliticas = findViewById(R.id.cbPoliticas);
         rbHombre = findViewById(R.id.rbHombre);
-        tbActivaBotones = findViewById(R.id.tbActivaBotones);
+        swActivaBotones = findViewById(R.id.swActivaBotones);
         btnRegistrar = findViewById(R.id.btnRegistrar);
 
     }
@@ -58,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
                 textResultado.setText("-- Cancelando -- \n");
                 limpiaCampos();
                 break;
-            case R.id.tbActivaBotones:
+            case R.id.swActivaBotones:
                 desactivaRegistro();
                 limpiaCampos();
                 break;
@@ -66,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void desactivaRegistro() {
-        if (tbActivaBotones.isChecked())
+        if (swActivaBotones.isChecked())
             btnRegistrar.setEnabled(true);
         else {
             btnRegistrar.setEnabled(false);

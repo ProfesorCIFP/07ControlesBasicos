@@ -39,10 +39,10 @@
         android:layout_height="wrap_content"
         android:onClick="onClick"
         android:text="Cancelar"
-        app:layout_constraintBaseline_toBaselineOf="@+id/tbActivaBotones"
+        app:layout_constraintBaseline_toBaselineOf="@+id/swActivaBotones"
         app:layout_constraintEnd_toStartOf="@+id/btnRegistrar"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/tbActivaBotones" />
+        app:layout_constraintStart_toEndOf="@+id/swActivaBotones" />
 
     <EditText
         android:id="@+id/etNombre"
@@ -170,15 +170,14 @@
 
     </RadioGroup>
 
-    <ToggleButton
-        android:id="@+id/tbActivaBotones"
+    <Switch
+        android:id="@+id/swActivaBotones"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:onClick="onClick"
-        android:textOff="Desactiva"
-        android:textOn="Activa"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Activar"
+        android:checked="true"
         app:layout_constraintEnd_toStartOf="@+id/btnCancelar"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
